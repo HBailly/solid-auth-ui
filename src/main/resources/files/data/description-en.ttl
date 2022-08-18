@@ -1,0 +1,84 @@
+@prefix interop:    <http://www.w3.org/ns/solid/interop#> .
+@prefix projectron: <https://projectron.example/needs#> .
+@prefix skos:       <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd:        <http://www.w3.org/2001/XMLSchema#> .
+
+projectron:access-en
+    a                    interop:AccessDescriptionSet ;
+    interop:usesLanguage "en"^^xsd:language .
+
+########################################################################################################################
+
+projectron:en-need-group-pm
+    a                              interop:AccessNeedGroupDescription ;
+    interop:inAccessDescriptionSet projectron:access-en ;
+    interop:hasAccessNeedGroup     projectron:need-group-pm ;
+    skos:prefLabel                 "Read and Contribute to Projects"@en ;
+    skos:definition                "Projectron needs access to your projects and tasks in order to provide its core functionality."@en .
+
+projectron:en-need-project
+    a                              interop:AccessNeedDescription ;
+    interop:inAccessDescriptionSet projectron:access-en ;
+    interop:hasAccessNeed          projectron:need-project ;
+    skos:prefLabel                 "Access to Projects"@en ;
+    skos:definition                "Allow Projectron to read the tasks you select, and create new ones. Projectron won't modify existing data, but can add more."@en .
+
+projectron:en-need-task
+    a                              interop:AccessNeedDescription ;
+    interop:inAccessDescriptionSet projectron:access-en ;
+    interop:hasAccessNeed          projectron:need-task ;
+    skos:prefLabel                 "Access to Tasks"@en ;
+    skos:definition                "Allow Projectron to read the tasks you select, and create new ones. Projectron won't modify existing data, but can add more."@en .
+
+projectron:en-need-contact-project
+    a                              interop:AccessNeedDescription ;
+    interop:inAccessDescriptionSet projectron:access-en ;
+    interop:hasAccessNeed          projectron:need-contact-project ;
+    skos:prefLabel                 "Access to Project Managers"@en ;
+    skos:definition                "Allow Projectron to assign projects to team members. Projectron will only read, and not modify existing nor create new data."@en .
+
+projectron:en-need-contact-task
+    a                              interop:AccessNeedDescription ;
+    interop:inAccessDescriptionSet projectron:access-en ;
+    interop:hasAccessNeed          projectron:need-contact-task ;
+    skos:prefLabel                 "Access to Task Assignees"@en ;
+    skos:definition                "Allow Projectron to assign tasks to team members. Projectron will only read, and not modify existing nor create new data."@en .
+
+########################################################################################################################
+
+projectron:en-need-group-account
+    a                              interop:AccessNeedGroupDescription ;
+    interop:inAccessDescriptionSet projectron:access-en ;
+    interop:hasAccessNeedGroup     projectron:need-group-account ;
+    skos:prefLabel                 "Manage your account preferences and payment details"@en ;
+    skos:definition                "Projectron needs to keep track of your account preferences and may optionally administer automatic payments."@en .
+
+projectron:en-need-credit-details
+    a                              interop:AccessNeedDescription ;
+    interop:inAccessDescriptionSet projectron:access-en ;
+    interop:hasAccessNeed          projectron:need-credit-details ;
+    skos:prefLabel                 "Access to Financial Details"@en ;
+    skos:definition                "Allow Projectron to use your credit card details to administer automatic payments. Projectron won't modify existing data, but can add more."@en .
+
+projectron:en-need-account-details
+    a                              interop:AccessNeedDescription ;
+    interop:inAccessDescriptionSet projectron:access-en ;
+    interop:hasAccessNeed          projectron:need-account-details ;
+    skos:prefLabel                 "Access to Account Details"@en ;
+    skos:definition                "Allow Projectron to keep account details to manage your preferences and contact details. Projectron will have full access to these details."@en .
+
+########################################################################################################################
+
+projectron:en-need-group-contact
+    a                              interop:AccessNeedGroupDescription ;
+    interop:inAccessDescriptionSet projectron:access-en ;
+    interop:hasAccessNeedGroup     projectron:need-group-contact ;
+    skos:prefLabel                 "View your collaborators"@en ;
+    skos:definition                "Projectron may optionally use your contacts to enable you to keep track of, and ease communication with project managers and tasks assignees."@en .
+
+projectron:en-need-contact
+    a                              interop:AccessNeedDescription ;
+    interop:inAccessDescriptionSet projectron:access-en ;
+    interop:hasAccessNeed          projectron:need-account-details ;
+    skos:prefLabel                 "Access to Contacts"@en ;
+    skos:definition                "Allow Projectron to view the members of your team. Projectron will only read, and not modify existing nor create new data."@en .

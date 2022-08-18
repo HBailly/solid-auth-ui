@@ -1,0 +1,67 @@
+@prefix rdf:             <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:            <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:             <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix interop:         <http://www.w3.org/ns/solid/interop#> .
+@prefix alice:           <https://alice.example/> .
+@prefix alice-auth:      <https://alice.example/authorization/> .
+@prefix jarvis:          <https://jarvis.example/> .
+@prefix projectron:      <https://projectron.example/> .
+@prefix performchart:    <https://performchart.example/> .
+
+@prefix bob:             <https://bob.example/> .
+@prefix sarah:           <https://sarah.example> .
+
+alice-auth:
+    a                              interop:AuthorizationRegistry ;
+    interop:hasAccessAuthorization alice-auth:e2765d6c,   # projectron
+                                   alice-auth:47e07897,   # jarvis
+                                   alice-auth:d577d117,   # sarah
+                                   alice-auth:4460dce3,   # bob
+                                   alice-auth:cce01253 .   # performchart
+
+alice-auth:e2765d6c
+    a                            interop:AccessAuthorization ;
+    interop:grantedBy            alice:\#id ;
+    interop:grantedWith          jarvis:\#id ;
+    interop:grantedAt            "2020-09-05T06:15:01Z"^^xsd:dateTime ;
+    interop:grantee              projectron:\#id ;
+    interop:hasAccessNeedGroup   projectron:\#d8219b1f ;
+    interop:hasDataAuthorization alice-auth:54a1b6a0, alice-auth:0e4cb692 .
+
+alice-auth:47e07897
+    a                            interop:AccessAuthorization ;
+    interop:grantedBy            alice:\#id ;
+    interop:grantedWith          jarvis:\#id ;
+    interop:grantedAt            "2020-09-05T06:15:01Z"^^xsd:dateTime ;
+    interop:grantee              jarvis:\#id ;
+    interop:hasAccessNeedGroup   jarvis:\#4fd1482d ;
+    interop:hasDataAuthorization alice-auth:55363f56, alice-auth:935458cf .
+
+alice-auth:d577d117
+    a                            interop:AccessAuthorization ;
+    interop:grantedBy            alice:\#id ;
+    interop:grantedWith          jarvis:\#id ;
+    interop:grantedAt            "2020-09-05T06:15:01Z"^^xsd:dateTime ;
+    interop:grantee              sarah:\#id ;
+    interop:hasAccessNeedGroup   jarvis:\#4fd1482d ;
+    interop:hasDataAuthorization alice-auth:2d1568fb, alice-auth:5ca4692b .
+
+alice-auth:4460dce3
+    a                            interop:AccessAuthorization ;
+    interop:grantedBy            alice:\#id ;
+    interop:grantedWith          jarvis:\#id ;
+    interop:grantedAt            "2020-09-05T06:15:01Z"^^xsd:dateTime ;
+    interop:grantee              bob:\#id ;
+    interop:hasAccessNeedGroup   projectron:\#d8219b1f ;
+    interop:hasDataAuthorization alice-auth:f800b10c, alice-auth:ec6057d9 .
+
+alice-auth:cce01253
+    a                            interop:AccessAuthorization ;
+    interop:grantedBy            alice:\#id ;
+    interop:grantedWith          jarvis:\#id ;
+    interop:grantedAt            "2020-09-05T06:15:01Z"^^xsd:dateTime ;
+    interop:grantee              performchart:\#id ;
+    interop:hasAccessNeedGroup   performchart:\#53c43f3d ;
+    interop:hasDataAuthorization alice-auth:8f178288, alice-auth:6531c8e2, alice-auth:0e36ba8f, alice-auth:ca14a518,
+                                 alice-auth:3e94161f, alice-auth:60e37fe3 .

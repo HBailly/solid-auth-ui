@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+
+    <!--
+        JHipster core tables.
+        The initial schema has the '00000000000001' id, so that it is over-written if we re-generate it.
+    -->
+    <changeSet id="00000000000000" author="jhipster">
+        <createTable tableName="jhi_user">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="login" type="varchar(50)">
+                <constraints unique="true" nullable="false" uniqueConstraintName="ux_user_login"/>
+            </column>
+            <column name="password_hash" type="varchar(60)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="first_name" type="varchar(50)"/>
+            <column name="last_name" type="varchar(50)"/>
+            <column name="email" type="varchar(191)">
+                <constraints unique="true" nullable="true" uniqueConstraintName="ux_user_email"/>
+            </column>
+            <column name="image_url" type="varchar(256)"/>
+            <column name="activated" type="boolean" valueBoolean="false">
+                <constraints nullable="false"/>
+            </column>
+            <column name="lang_key" type="varchar(10)"/>
+            <column name="activation_key" type="varchar(20)"/>
+            <column name="reset_key" type="varchar(20)"/>
+            <column name="created_by" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="timestamp"/>
+            <column name="reset_date" type="timestamp">
+                <constraints nullable="true"/>
+            </column>
+            <column name="last_modified_by" type="varchar(50)"/>
+            <column name="last_modified_date" type="timestamp"/>
+        </createTable>
+
+        <createTable tableName="jhi_authority">
+            <column name="name" type="varchar(50)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="jhi_user_authority">
+            <column name="user_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="authority_name" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="user_id, authority_name" tableName="jhi_user_authority"/>
+
+        <addForeignKeyConstraint baseColumnNames="authority_name"
+                                 baseTableName="jhi_user_authority"
+                                 constraintName="fk_authority_name"
+                                 referencedColumnNames="name"
+                                 referencedTableName="jhi_authority"/>
+
+        <addForeignKeyConstraint baseColumnNames="user_id"
+                                 baseTableName="jhi_user_authority"
+                                 constraintName="fk_user_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+        <loadData
+                file="config/liquibase/data/user.csv"
+                separator=";"
+                tableName="jhi_user"
+                usePreparedStatements="true">
+            <column name="id" type="numeric"/>
+            <column name="activated" type="boolean"/>
+            <column name="created_date" type="timestamp"/>
+        </loadData>
+        <dropDefaultValue tableName="jhi_user" columnName="created_date" columnDataType="${datetimeType}"/>
+        <loadData
+                file="config/liquibase/data/authority.csv"
+                separator=";"
+                tableName="jhi_authority"
+                usePreparedStatements="true">
+            <column name="name" type="string"/>
+        </loadData>
+        <loadData
+                file="config/liquibase/data/user_authority.csv"
+                separator=";"
+                tableName="jhi_user_authority"
+                usePreparedStatements="true">
+            <column name="user_id" type="numeric"/>
+        </loadData>
+    </changeSet>
+
+    <changeSet author="Hadrien" id="00000000000001">
+        <createTable tableName="solid_access_authorization">
+            <column name="id" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="solid_access_authorizationPK"/>
+            </column>
+            <column name="created_date" type="TIMESTAMPTZ">
+                <constraints nullable="false"/>
+            </column>
+            <column name="scenario" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="session_id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="turtle" type="CLOB">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="Hadrien" id="00000000000002">
+        <createTable tableName="solid_data_authorization">
+            <column name="id" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="solid_data_authorizationPK"/>
+            </column>
+            <column name="created_date" type="TIMESTAMPTZ">
+                <constraints nullable="false"/>
+            </column>
+            <column name="scenario" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="session_id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="turtle" type="CLOB">
+                <constraints nullable="false"/>
+            </column>
+            <column name="access_authorization_id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint baseColumnNames="access_authorization_id" baseTableName="solid_data_authorization"
+                                 constraintName="fk_access_authorization_id" deferrable="false"
+                                 initiallyDeferred="false" referencedColumnNames="id"
+                                 referencedTableName="solid_access_authorization" validate="true"/>
+    </changeSet>
+
+    <changeSet author="Hadrien" id="00000000000003">
+        <createTable tableName="survey_session">
+            <column name="ID" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="survey_sessionPK"/>
+            </column>
+            <column name="date" type="TIMESTAMPTZ">
+                <constraints nullable="false"/>
+            </column>
+            <column name="completed" type="BOOLEAN" valueBoolean="false">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="Hadrien" id="00000000000004">
+        <createTable tableName="survey_response">
+            <column autoIncrement="true" name="ID" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="session_id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="questionnaire" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="section" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="index" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="type" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="question" type="CLOB">
+                <constraints nullable="false"/>
+            </column>
+            <column name="answer" type="CLOB">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+        <addPrimaryKey columnNames="session_id, questionnaire, section, index" constraintName="survey_responsePK"
+                       tableName="survey_response"
+                       validate="true"/>
+        <addForeignKeyConstraint baseColumnNames="session_id" baseTableName="survey_response"
+                                 constraintName="fk_survey_session_response" deferrable="false"
+                                 initiallyDeferred="false" referencedColumnNames="id"
+                                 referencedTableName="survey_session" validate="true"/>
+    </changeSet>
+
+    <changeSet author="Hadrien" id="00000000000005">
+        <createTable tableName="survey_chrono">
+            <column name="session_id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="scenario" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="start_time" type="TIMESTAMPTZ">
+                <constraints nullable="false"/>
+            </column>
+            <column name="stop_time" type="TIMESTAMPTZ">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addPrimaryKey columnNames="session_id, scenario" constraintName="survey_chronoPK" tableName="survey_chrono"
+                       validate="true"/>
+        <addForeignKeyConstraint baseColumnNames="session_id" baseTableName="survey_chrono"
+                                 constraintName="fk_survey_session_chrono" deferrable="false"
+                                 initiallyDeferred="false" referencedColumnNames="id"
+                                 referencedTableName="survey_session" validate="true"/>
+    </changeSet>
+
+    <changeSet author="jhipster" id="00000000000006" context="test">
+        <createTable tableName="jhi_date_time_wrapper">
+            <column name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="jhi_date_time_wrapperPK"/>
+            </column>
+            <column name="instant" type="timestamp"/>
+            <column name="local_date_time" type="timestamp"/>
+            <column name="offset_date_time" type="timestamp"/>
+            <column name="zoned_date_time" type="timestamp"/>
+            <column name="local_time" type="time"/>
+            <column name="offset_time" type="time"/>
+            <column name="local_date" type="date"/>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

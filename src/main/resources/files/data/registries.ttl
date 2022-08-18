@@ -1,0 +1,16 @@
+@prefix interop:        <http://www.w3.org/ns/solid/interop#> .
+@prefix xsd:            <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix alice:          <https://alice.example/> .
+@prefix alice-work:     <https://work.alice.example/> .
+@prefix alice-personal: <https://personal.alice.example/> .
+
+########################################################################################################################
+# random data registry generator : https://onlinerandomtools.com/generate-random-data-from-regexp
+########################################################################################################################
+
+alice:registries
+    a                                interop:RegistrySet ;
+    interop:hasAgentRegistry         alice:agents\/ ;
+    interop:hasAuthorizationRegistry alice:authorization\/ ;
+    interop:hasDataRegistry          alice-work:data\/, alice-personal:data\/ .

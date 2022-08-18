@@ -1,0 +1,83 @@
+@startuml
+skinparam ranksep 25
+skinparam nodesep 25
+hide empty fields
+hide empty methods
+
+class AccessNeed
+
+class "AccessNeed" as Dependent {
+    <i>"Dependent"</i>
+}
+
+AccessNeed --> Dependent : hasAccessNeed*
+
+
+@enduml
+
+@startuml
+skinparam ranksep 25
+skinparam nodesep 25
+hide empty fields
+hide empty methods
+
+class AccessNeed
+
+class "AccessNeed" as Ascendant {
+    <i>"Ascendant"</i>
+}
+
+Ascendant <-- AccessNeed : inheritsFromNeed?
+
+
+@enduml
+
+@startuml
+skinparam ranksep 25
+skinparam nodesep 25
+hide empty fields
+hide empty methods
+
+class "Project" as Project {
+    an AccessNeed
+    **Shape**: <i>Project</i>
+}
+
+class "Assignee" as Assignee {
+    an AccessNeed
+    **Shape**: <i>Person</i>
+}
+
+Assignee -up-> Project: inheritsFromNeed
+Project -down-> Assignee #grey;line.dotted;text:grey;: <i>(contains person shapes)</i>
+
+
+@enduml
+
+@startuml
+skinparam ranksep 25
+skinparam nodesep 25
+hide empty fields
+hide empty methods
+
+class "Project" as Project {
+    an AccessNeed
+    **Shape**: <i>Project</i>
+}
+
+class "Assignee" as Assignee {
+    an AccessNeed
+    **Shape**: <i>Person</i>
+}
+
+class "Contact" as Contact {
+    an AccessNeed
+    **Shape**: <i>Person</i>
+}
+
+Project --> Assignee:hasAccessNeed
+Assignee -up-> Contact: inheritsFromNeed
+Assignee -up-> Project::an #grey;line.dotted;text:grey;: <i>(depends from need)</i>
+
+
+@enduml

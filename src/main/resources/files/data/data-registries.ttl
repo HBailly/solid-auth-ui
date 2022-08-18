@@ -1,0 +1,115 @@
+@prefix interop:                <http://www.w3.org/ns/solid/interop#> .
+@prefix xsd:                    <http://www.w3.org/2001/XMLSchema#> .
+@prefix ldp:                    <http://www.w3.org/ns/ldp#>.
+@prefix rdfs:                   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix jarvis:                 <https://jarvis.example/> .
+@prefix alice:                  <https://alice.example/> .
+@prefix alice-work-data:        <https://work.alice.example/data/> .
+@prefix alice-personal-data:    <https://personal.alice.example/data/> .
+@prefix pm-shapetree:           <http://data.example/shapetrees/pm#> .
+@prefix projectron:             <https://projectron.example/#> .
+
+alice-personal-data:
+    a                           interop:DataRegistry ;
+    interop:hasDataRegistration alice-personal-data:projects\/, alice-personal-data:tasks\/,
+                                alice-personal-data:creditcards\/, alice-personal-data:contacts\/ .
+
+alice-work-data:
+    a                           interop:DataRegistry ;
+    interop:hasDataRegistration alice-work-data:projects\/, alice-work-data:tasks\/, alice-work-data:creditcards\/,
+                                alice-work-data:projectron\/, alice-work-data:contacts\/ .
+
+#=======================================================================================================================
+# https://onlinerandomtools.com/generate-random-data-from-regexp
+# https://mockaroo.com
+#=======================================================================================================================
+
+# WORK
+
+alice-work-data:projects\/
+    a                           interop:DataRegistration ;
+    interop:registeredBy        alice:\#id ;
+    interop:registeredWith      jarvis:\#id ;
+    interop:registeredAt        "2020-04-04T20:15:47.000Z"^^xsd:dateTime ;
+    interop:updatedAt           "2020-04-04T21:11:33.000Z"^^xsd:dateTime ;
+    interop:registeredShapeTree pm-shapetree:ProjectTree ;
+    ldp:contains                alice-work-data:projects\/s5u6cepa, alice-work-data:projects\/ir9nuw77 .
+
+alice-work-data:tasks\/
+    a                           interop:DataRegistration ;
+    interop:registeredBy        alice:\#id ;
+    interop:registeredWith      jarvis:\#id ;
+    interop:registeredAt        "2020-04-04T20:15:47.000Z"^^xsd:dateTime ;
+    interop:updatedAt           "2020-04-04T21:11:33.000Z"^^xsd:dateTime ;
+    interop:registeredShapeTree pm-shapetree:TaskTree ;
+    ldp:contains                alice-work-data:tasks\/8501f084, alice-work-data:tasks\/qhb5mlmp,
+                                alice-work-data:tasks\/sg7s5x30 .
+
+alice-work-data:contacts\/
+    a                           interop:DataRegistration ;
+    interop:registeredBy        alice:\#id ;
+    interop:registeredWith      jarvis:\#id ;
+    interop:registeredAt        "2020-04-04T20:15:47.000Z"^^xsd:dateTime ;
+    interop:updatedAt           "2020-04-04T21:11:33.000Z"^^xsd:dateTime ;
+    interop:registeredShapeTree pm-shapetree:ContactTree ;
+    ldp:contains                alice-work-data:contacts\/h430rz65, alice-work-data:contacts\/4c23z7qs,
+                                alice-work-data:contacts\/pbvonly2, alice-work-data:contacts\/3hn3pn2b,
+                                alice-work-data:contacts\/ht1dsldt, alice-work-data:contacts\/moj80l98 .
+
+alice-work-data:creditcards\/
+    a                           interop:DataRegistration ;
+    interop:registeredBy        alice:\#id ;
+    interop:registeredWith      jarvis:\#id ;
+    interop:registeredAt        "2020-04-04T20:15:47.000Z"^^xsd:dateTime ;
+    interop:updatedAt           "2020-04-04T21:11:33.000Z"^^xsd:dateTime ;
+    interop:registeredShapeTree pm-shapetree:CreditCardTree ;
+    ldp:contains                alice-work-data:creditcards\/z2plpdek .
+
+alice-work-data:projectron\/
+    a                           interop:DataRegistration ;
+    interop:registeredBy        alice:\#id ;
+    interop:registeredWith      jarvis:\#id ;
+    interop:registeredAt        "2020-04-04T20:15:47.000Z"^^xsd:dateTime ;
+    interop:updatedAt           "2020-04-04T21:11:33.000Z"^^xsd:dateTime ;
+    interop:registeredShapeTree pm-shapetree:ProjectronAccountTree .
+
+#-----------------------------------------------------------------------------------------------------------------------
+
+# PERSONAL
+
+alice-personal-data:projects\/
+    a                           interop:DataRegistration ;
+    interop:registeredBy        alice:\#id ;
+    interop:registeredWith      jarvis:\#id ;
+    interop:registeredAt        "2020-04-04T20:15:47.000Z"^^xsd:dateTime ;
+    interop:updatedAt           "2020-04-04T21:11:33.000Z"^^xsd:dateTime ;
+    interop:registeredShapeTree pm-shapetree:ProjectTree ;
+    ldp:contains                alice-personal-data:projects\/uk8cmrhd .
+
+alice-personal-data:tasks\/
+    a                           interop:DataRegistration ;
+    interop:registeredBy        alice:\#id ;
+    interop:registeredWith      jarvis:\#id ;
+    interop:registeredAt        "2020-04-04T20:15:47.000Z"^^xsd:dateTime ;
+    interop:updatedAt           "2020-04-04T21:11:33.000Z"^^xsd:dateTime ;
+    interop:registeredShapeTree pm-shapetree:TaskTree ;
+    ldp:contains                alice-personal-data:tasks\/phlgk7b9, alice-personal-data:tasks\/ksihwgiq .
+
+alice-personal-data:contacts\/
+    a                           interop:DataRegistration ;
+    interop:registeredBy        alice:\#id ;
+    interop:registeredWith      jarvis:\#id ;
+    interop:registeredAt        "2020-04-04T20:15:47.000Z"^^xsd:dateTime ;
+    interop:updatedAt           "2020-04-04T21:11:33.000Z"^^xsd:dateTime ;
+    interop:registeredShapeTree pm-shapetree:ContactTree ;
+    ldp:contains                alice-personal-data:contacts\/eb5147pw, alice-personal-data:contacts\/aw8linss,
+                                alice-personal-data:contacts\/isuq4em8, alice-personal-data:contacts\/o5tzpk1h .
+
+alice-personal-data:creditcards\/
+    a                           interop:DataRegistration ;
+    interop:registeredBy        alice:\#id ;
+    interop:registeredWith      jarvis:\#id ;
+    interop:registeredAt        "2020-04-04T20:15:47.000Z"^^xsd:dateTime ;
+    interop:updatedAt           "2020-04-04T21:11:33.000Z"^^xsd:dateTime ;
+    interop:registeredShapeTree pm-shapetree:CreditCardTree ;
+    ldp:contains                alice-personal-data:creditcards\/dt90cpuk .

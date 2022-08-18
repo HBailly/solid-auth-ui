@@ -1,0 +1,10 @@
+@prefix interop:    <http://www.w3.org/ns/solid/interop#> .
+@prefix projectron: <https://projectron.example/#> .
+@prefix alice:      <https://alice.example/#> .
+@prefix bob:        <https://bob.example/#> .
+
+alice:request
+    a                          interop:AccessRequest ;
+    interop:fromSocialAgent    alice:id ;
+    interop:toSocialAgent      bob:id ;
+    interop:hasAccessNeedGroup projectron:need-group-pm .

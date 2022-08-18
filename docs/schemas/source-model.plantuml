@@ -1,0 +1,198 @@
+@startuml
+hide empty fields
+hide empty methods
+
+class SocialAgent #MediumSeaGreen implements Agent
+class Application implements Agent
+class DataInstance #Peru
+
+SocialAgent -down-> RegistrySet #line.bold : hasRegistrySet
+SocialAgent -right-> Application #line.bold : hasAuthorizationAgent
+
+RegistrySet --> AgentRegistry #line.bold : hasAgentRegistry
+RegistrySet --> AuthorizationRegistry #line.bold : hasAuthorizationRegistry
+RegistrySet --> DataRegistry #line.dashed : hasDataRegistry*
+
+AgentRegistry --> SocialAgentRegistration #line.dashed : hasSocialAgentRegistration*
+AgentRegistry --> ApplicationRegistration #line.dashed : hasApplicationRegistration*
+
+DataRegistry --> DataRegistration #line.dashed :  hasDataRegistration*
+DataRegistration --> DataInstance #line.dashed; : contains*
+
+AuthorizationRegistry --> AccessAuthorization #line.dashed : hasAccessAuthorization*
+
+AccessAuthorization --> AccessNeedGroup #line.dotted : hasAccessNeedGroup?
+AccessAuthorization --> DataAuthorization : hasDataAuthorization+
+AccessAuthorization --> AccessAuthorization #line.dotted : replaces?
+
+@enduml
+
+@startuml
+hide empty fields
+hide empty methods
+
+enum AccessNecessity {
+    AccessRequired
+    AccessOptional
+}
+
+enum AccessScenario {
+    SharedAccess
+    PersonalAccess
+}
+
+enum AuthenticateAs {
+    SocialAgent
+    Application
+}
+
+enum AccessMode {
+    Read
+    Write
+    Update
+    Create
+    Delete
+    Append
+}
+
+class Application #MediumSeaGreen
+
+class AccessNeedGroup {
+    accessNecessity
+    accessScenario
+    authenticatesAs
+}
+class AccessNeed {
+    registeredShapeTree
+    accessMode
+    creatorAccessMode
+    accessNecessity
+}
+
+class AccessDescriptionSet {
+    usesLanguage
+}
+class AccessNeedGroupDescription #Peru {
+    preflabel
+    definition
+}
+class AccessNeedDescription #Peru {
+    preflabel
+    definition
+}
+
+class DataInstance
+
+Application -down-> AccessNeedGroup #line.bold : hasAccessNeedGroup
+
+AccessNeedGroup --> AccessDescriptionSet #line.dashed : hasAccessDescriptionSet*
+AccessNeedGroup -down-> AccessNeed : hasAccessNeed+
+
+AccessNeed -down-> DataInstance #line.dashed : hasDataInstance*
+AccessNeed --> AccessNeed #line.dotted : inheritsFromNeed?
+
+AccessNeedGroupDescription --> AccessDescriptionSet #line.bold : inAccessDescriptionSet
+AccessNeedGroupDescription --> AccessNeedGroup #line.bold : hasAccessNeedGroup
+
+AccessNeedDescription --> AccessDescriptionSet #line.bold : inAccessDescriptionSet
+AccessNeedDescription --> AccessNeed #line.bold : hasAccessNeed
+
+@enduml
+
+@startuml
+hide empty fields
+hide empty methods
+
+enum ScopeOfAuthorization {
+    All
+    AllFromAgent
+    AllFromRegistry
+    SelectedFromRegistry
+    Inherited
+    NoAccess
+}
+
+
+enum AccessMode {
+    Read
+    Write
+    Update
+    Create
+    Delete
+    Append
+}
+
+class AccessAuthorization #MediumSeaGreen {
+    grantedAt
+}
+
+class DataAuthorization {
+    registeredShapeTree
+    accessMode
+    creatorAccessMode
+    scopeOfAuthorization
+}
+
+AccessAuthorization -left-> DataAuthorization : hasDataAuthorization+
+AccessAuthorization --> AccessAuthorization #line.dotted : replaces?
+AccessAuthorization -up-> AccessNeedGroup #line.dotted : hasAccessNeedGroup?
+AccessAuthorization ---> SocialAgent #line.bold : grantedBy
+AccessAuthorization ---> SocialAgent #line.bold : grantee
+AccessAuthorization -up-> Application #line.bold : grantedWith
+
+DataAuthorization --> SocialAgent #line.bold : grantee
+DataAuthorization -up-> AccessNeed #line.dotted : satisfiesAccessNeed?
+
+All --up|> DataAuthorization
+
+AllFromAgent --up|> DataAuthorization
+AllFromAgent --> SocialAgent #line.bold : dataOwner
+
+AllFromRegistry --up|> DataAuthorization
+AllFromRegistry --> DataRegistration #line.bold : hasDataRegistration
+AllFromRegistry --> SocialAgent #line.bold : dataOwner
+
+SelectedFromRegistry ---up|> DataAuthorization
+SelectedFromRegistry --> SocialAgent #line.bold : dataOwner
+SelectedFromRegistry --> DataRegistration #line.bold : hasDataRegistration
+SelectedFromRegistry --> DataInstance : hasDataInstance+
+
+Inherited ----up|> DataAuthorization
+Inherited --up> SocialAgent #line.bold : dataOwner
+Inherited --up> DataRegistration #line.bold : hasDataRegistration
+Inherited --up> DataInstance : hasDataInstance+
+Inherited --up> DataAuthorization #line.dotted : inheritsFromAuthorization?
+
+NoAccess --up|> DataAuthorization
+@enduml
+
+@startuml
+hide empty fields
+hide empty methods
+
+interface Agent
+class SocialAgent implements Agent
+
+class AccessGrant #MediumSeaGreen {
+    grantedAt
+}
+
+class DataGrant {
+    registeredShapeTree
+    accessMode
+    creatorAccessMode
+    scopeOfGrant
+}
+
+AccessGrant --> SocialAgent #line.bold : grantee
+AccessGrant --> Agent #line.bold : grantedBy
+AccessGrant --> AccessNeedGroup #line.dotted : hasAccessNeedGroup
+AccessGrant -down-> DataGrant : hasDataGrant+
+
+DataGrant --> SocialAgent : dataOwner
+DataGrant --> Agent : grantee
+DataGrant --> AccessNeed : satisfiesAccessNeed
+DataGrant --> DataInstance : hasDataInstance*
+DataGrant --> DataGrant #line.dotted : inheritsFromGrant
+
+@enduml

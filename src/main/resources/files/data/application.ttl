@@ -1,0 +1,15 @@
+@prefix interop:       <http://www.w3.org/ns/solid/interop#>.
+@prefix projectron:    <https://projectron.example/>.
+@prefix needs:         <https://projectron.example/needs#>.
+@prefix acme:          <https://acme.example/#>.
+@prefix jarvis:        <https://jarvis.example/>.
+@prefix stark:         <https://stark-industry.example/>.
+@prefix auth:          <https://jarvis.example/needs#>.
+
+jarvis:\#id
+    a                              interop:Application ;
+    interop:applicationName        "Jarvis" ;
+    interop:applicationDescription "Just A Rather Very Intelligent Authorization Agent." ;
+    interop:applicationAuthor      stark:id ;
+    interop:applicationThumbnail   <https://i.stack.imgur.com/3dMSk.png> ;
+    interop:hasAccessNeedGroup     auth:auth-registries .

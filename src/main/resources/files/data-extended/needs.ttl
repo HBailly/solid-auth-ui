@@ -1,0 +1,84 @@
+@prefix interop:       <http://www.w3.org/ns/solid/interop#> .
+@prefix acl:           <http://www.w3.org/ns/auth/acl#> .
+@prefix projectron:    <https://projectron.example/#> .
+@prefix needs:         <https://projectron.example/needs#> .
+@prefix pm-shapetrees: <http://data.example/shapetrees/pm#> .
+@prefix dpv:           <https://w3id.org/dpv/dpv-owl#> .
+
+needs:need-group-pm
+    a                                     interop:AccessNeedGroup ;
+    interop:hasAccessNeedGroupDescription needs:en-need-group-pm, needs:fr-need-group-pm ;
+    interop:accessNecessity               interop:AccessRequired ;
+    interop:accessScenario                interop:PersonalAccess ;
+    interop:authenticatesAs               interop:Application ;
+    interop:hasAccessNeed                 needs:need-project .
+
+needs:need-project
+    a                                interop:AccessNeed ;
+    interop:hasAccessNeedDescription needs:en-need-project, needs:fr-need-project ;
+    interop:registeredShapeTree      pm-shapetrees:ProjectTree ;
+    interop:accessNecessity          interop:AccessRequired ;
+    interop:accessScenario           interop:SharedAccess ;
+    interop:accessMode               acl:Read, acl:Create ;
+    interop:creatorAccessMode        acl:Read, acl:Create, acl:Update, acl:Delete ;
+    interop:hasPurpose               dpv:ServiceProvision, dpv:ServiceUsageAnalytics ;
+    interop:hasAccessNeed            needs:need-task, needs:need-contact-project .
+
+needs:need-task
+    a                                interop:AccessNeed ;
+    interop:hasAccessNeedDescription needs:en-need-task, needs:fr-need-task ;
+    interop:registeredShapeTree      pm-shapetrees:TaskTree ;
+    interop:accessNecessity          interop:AccessRequired ;
+    interop:accessMode               acl:Read, acl:Create ;
+    interop:creatorAccessMode        acl:Read, acl:Create, acl:Update, acl:Delete ;
+    interop:hasPurpose               dpv:ServiceProvision, dpv:ServiceUsageAnalytics ;
+    interop:hasAccessNeed            needs:need-contact-task .
+
+needs:need-contact-task
+    a                                interop:AccessNeed ;
+    interop:hasAccessNeedDescription needs:en-need-contact-task, needs:fr-need-contact-task ;
+    interop:registeredShapeTree      pm-shapetrees:ContactTree ;
+    interop:accessNecessity          interop:AccessOptional ;
+    interop:accessMode               acl:Read, acl:Create, acl:Update ;
+    interop:creatorAccessMode        acl:Read, acl:Create, acl:Update, acl:Delete ;
+    interop:hasPurpose               dpv:ServiceProvision, dpv:ServiceUsageAnalytics .
+
+needs:need-contact-project
+    a                                interop:AccessNeed ;
+    interop:hasAccessNeedDescription needs:en-need-contact-project, needs:fr-need-contact-project ;
+    interop:registeredShapeTree      pm-shapetrees:ContactTree ;
+    interop:accessNecessity          interop:AccessOptional ;
+    interop:accessMode               acl:Read ;
+    interop:hasPurpose               dpv:ServiceProvision, dpv:ServiceUsageAnalytics .
+
+# ----------------------------------------------------------------------------------------------------------------------
+
+needs:need-group-account
+    a                                     interop:AccessNeedGroup ;
+    interop:hasAccessNeedGroupDescription needs:en-need-group-account, needs:fr-need-group-account ;
+    interop:accessNecessity               interop:AccessRequired ;
+    interop:accessScenario                interop:PersonalAccess ;
+    interop:authenticatesAs               interop:Application ;
+    interop:hasAccessNeed                 needs:need-credit-details, needs:need-account-details .
+
+needs:need-credit-details
+    a                                interop:AccessNeed ;
+    interop:hasAccessNeedDescription needs:en-need-credit-details, needs:fr-need-credit-details ;
+    interop:registeredShapeTree      pm-shapetrees:CreditCardTree ;
+    interop:accessNecessity          interop:AccessOptional ;
+    interop:accessScenario           interop:PersonalAccess ;
+    interop:accessMode               acl:Read, acl:Create ;
+    interop:creatorAccessMode        acl:Read, acl:Create, acl:Update, acl:Delete ;
+    interop:hasPurpose               dpv:Payment .
+
+needs:need-account-details
+    a                                interop:AccessNeed ;
+    interop:hasAccessNeedDescription needs:en-need-account-details, needs:fr-need-account-details ;
+    interop:registeredShapeTree      pm-shapetrees:ProjectronAccountTree ;
+    interop:accessNecessity          interop:AccessRequired ;
+    interop:accessScenario           interop:PersonalAccess ;
+    interop:accessMode               acl:Read, acl:Create, acl:Update, acl:Delete ;
+    interop:creatorAccessMode        acl:Read, acl:Create, acl:Update, acl:Delete ;
+    interop:hasPurpose               dpv:AccountManagement, dpv:Personalisation, dpv:Marketing,
+                                     dpv:OptimisationForConsumer, dpv:UserInterfacePersonalisation,
+                                     dpv:LegalCompliance .

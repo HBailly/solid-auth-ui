@@ -1,0 +1,62 @@
+@startuml
+listfonts
+@enduml
+@startuml
+skinparam linetype ortho
+
+object "**Homepage**" as ROOT {
+    __<font color=blue>""solid-auth-ui.computing.dcu.ie""</font>__
+    Website landing page
+}
+
+object "**Experiment**" as PROTOTYPE {
+    __<font color=blue>""/prototype""</font>__
+    Introducing participants with
+    . the Plain Language Statement (PLS) and
+    . the Informed Consent (IC) Form,
+    and conducting the asynchronous experiment.
+}
+
+object "**Contact**" as CONTACT {
+    __<font color=blue>""/contact""</font>__
+    Presentation of the research team
+    and contact details
+}
+
+object "**UI Primer**" as TRIAL {
+    __<font color=blue>""/trial""</font>__
+    Demonstrates the features of the UI outside of
+    the experiment setting.
+}
+
+object "**Glossary**" as GLOSSARY {
+    __<font color=blue>""/glossary""</font>__
+    Terms and definitions
+}
+
+
+object "**UI Demo and Tutorial Video**" as TUTORIAL {
+    __<font color=blue>""/tutorial""</font>__
+    Embedded YouTube videos presenting the UI features.
+}
+object "**About**" as ABOUT {
+    __<font color=blue>""/about""</font>__
+    Presentation of the research subject and context
+}
+
+object "**State-of-the-Art Literature**" as LITERATURE {
+    __<font color=blue>""/literature""</font>__
+    Lists of some of the papers main sources
+}
+
+ROOT::solid --> PROTOTYPE
+ROOT::solid ---> CONTACT
+ROOT::solid --> ABOUT
+
+ABOUT ---> LITERATURE
+
+PROTOTYPE ---> TRIAL
+PROTOTYPE --> GLOSSARY
+PROTOTYPE ---> TUTORIAL
+
+@enduml

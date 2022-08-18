@@ -1,0 +1,150 @@
+@prefix rdf:         <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:        <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix interop:     <http://www.w3.org/ns/solid/interop#> .
+@prefix foaf:        <http://xmlns.com/foaf/0.1/> .
+
+@prefix alice:       <https://alice.example/> .
+@prefix jarvis:      <https://jarvis.example/> .
+@prefix bob:         <https://bob.example/> .
+@prefix jose:        <https://jose.example/> .
+@prefix sarah:       <https://sarah.example/> .
+
+@prefix JAmott:      <https://jamott.example/> .
+@prefix JTill:       <https://jtill.example/> .
+@prefix MBlaiklock:  <https://mblaiklock.example/> .
+@prefix NPowder:     <https://npowder.example/> .
+@prefix RCandy:      <https://rcandy.example/> .
+@prefix LKeeves:     <https://lkeeves.example/> .
+@prefix RRamsbottom: <https://rramsbottom.example/> .
+@prefix OCondliffe:  <https://ocondliffe.example/> .
+@prefix RKeniwell:   <https://rkeniwell.example/> .
+@prefix FBaum:       <https://fbaum.example/> .
+
+@prefix acme:        <https://acme.example/>.
+@prefix stark:       <https://stark-industry.example/>.
+
+alice:\#id
+    a                             interop:SocialAgent ;
+    foaf:name                     "Alice"@en ;
+    foaf:givenName                "Alice"@en ;
+    foaf:familyName               "Doe"@en ;
+    interop:hasRegistrySet        alice:registries ;
+    interop:hasAuthorizationAgent jarvis: ;
+    interop:hasInbox              alice:inbox\/general ;
+    interop:hasAccessInbox        alice:inbox\/access .
+
+JAmott:\#id
+    a                             interop:SocialAgent ;
+    foaf:name                     "Jody Amott"@en ;
+    foaf:givenName                "Jody"@en ;
+    foaf:familyName               "Amott"@en ;
+    interop:hasRegistrySet        JAmott:registries ;
+    interop:hasAuthorizationAgent jarvis: ;
+    interop:hasInbox              JAmott:inbox\/general ;
+    interop:hasAccessInbox        JAmott:inbox\/access .
+
+JTill:\#id
+    a                             interop:SocialAgent ;
+    foaf:name                     "Jerrilyn Till"@en ;
+    foaf:givenName                "Jerrilyn"@en ;
+    foaf:familyName               "Till"@en ;
+    interop:hasRegistrySet        JTill:registries ;
+    interop:hasAuthorizationAgent jarvis: ;
+    interop:hasInbox              JTill:inbox\/general ;
+    interop:hasAccessInbox        JTill:inbox\/access .
+
+MBlaiklock:\#id
+    a                             interop:SocialAgent ;
+    foaf:name                     "Melita Blaiklock"@en ;
+    foaf:givenName                "Melita"@en ;
+    foaf:familyName               "Blaiklock"@en ;
+    interop:hasRegistrySet        MBlaiklock:registries ;
+    interop:hasAuthorizationAgent jarvis: ;
+    interop:hasInbox              MBlaiklock:inbox\/general ;
+    interop:hasAccessInbox        MBlaiklock:inbox\/access .
+
+NPowder:\#id
+    a                             interop:SocialAgent ;
+    foaf:name                     "Nariko Powder"@en ;
+    foaf:givenName                "Nariko"@en ;
+    foaf:familyName               "Powder"@en ;
+    interop:hasRegistrySet        NPowder:registries ;
+    interop:hasAuthorizationAgent jarvis: ;
+    interop:hasInbox              NPowder:inbox\/general ;
+    interop:hasAccessInbox        NPowder:inbox\/access .
+
+RCandy:\#id
+    a                             interop:SocialAgent ;
+    foaf:name                     "Rourke Candy"@en ;
+    foaf:givenName                "Rourke"@en ;
+    foaf:familyName               "Candy"@en ;
+    interop:hasRegistrySet        RCandy:registries ;
+    interop:hasAuthorizationAgent jarvis: ;
+    interop:hasInbox              RCandy:inbox\/general ;
+    interop:hasAccessInbox        RCandy:inbox\/access .
+
+LKeeves:\#id
+    a                             interop:SocialAgent ;
+    foaf:name                     "Larry Keeves"@en ;
+    foaf:givenName                "Larry"@en ;
+    foaf:familyName               "Keeves"@en ;
+    interop:hasRegistrySet        LKeeves:registries ;
+    interop:hasAuthorizationAgent jarvis: ;
+    interop:hasInbox              LKeeves:inbox\/general ;
+    interop:hasAccessInbox        LKeeves:inbox\/access .
+
+RRamsbottom:\#id
+    a                             interop:SocialAgent ;
+    foaf:name                     "Reinald Ramsbottom"@en ;
+    foaf:givenName                "Reinald"@en ;
+    foaf:familyName               "Ramsbottom"@en ;
+    interop:hasRegistrySet        RRamsbottom:registries ;
+    interop:hasAuthorizationAgent jarvis: ;
+    interop:hasInbox              RRamsbottom:inbox\/general ;
+    interop:hasAccessInbox        RRamsbottom:inbox\/access .
+
+OCondliffe:\#id
+    a                             interop:SocialAgent ;
+    foaf:name                     "Obed Condliffe"@en ;
+    foaf:givenName                "Obed"@en ;
+    foaf:familyName               "Condliffe"@en ;
+    interop:hasRegistrySet        OCondliffe:registries ;
+    interop:hasAuthorizationAgent jarvis: ;
+    interop:hasInbox              OCondliffe:inbox\/general ;
+    interop:hasAccessInbox        OCondliffe:inbox\/access .
+
+RKeniwell:\#id
+    a                             interop:SocialAgent ;
+    foaf:name                     "Rita Keniwell"@en ;
+    foaf:givenName                "Rita"@en ;
+    foaf:familyName               "Keniwell"@en ;
+    interop:hasRegistrySet        RKeniwell:registries ;
+    interop:hasAuthorizationAgent jarvis: ;
+    interop:hasInbox              RKeniwell:inbox\/general ;
+    interop:hasAccessInbox        RKeniwell:inbox\/access .
+
+FBaum:\#id
+    a                             interop:SocialAgent ;
+    foaf:name                     "Francesco Baum"@en ;
+    foaf:givenName                "Francesco"@en ;
+    foaf:familyName               "Baum"@en ;
+    interop:hasRegistrySet        FBaum:registries ;
+    interop:hasAuthorizationAgent jarvis: ;
+    interop:hasInbox              FBaum:inbox\/general ;
+    interop:hasAccessInbox        FBaum:inbox\/access .
+
+acme:\#id
+    a                             interop:SocialAgent ;
+    foaf:name                     "ACME Corp"@en ;
+    interop:hasRegistrySet        acme:registries ;
+    interop:hasAuthorizationAgent jarvis: ;
+    interop:hasInbox              acme:inbox\/general ;
+    interop:hasAccessInbox        acme:inbox\/access .
+
+stark:\#id
+    a                             interop:SocialAgent ;
+    foaf:name                     "Tony Stark"@en ;
+    interop:hasRegistrySet        stark:registries ;
+    interop:hasAuthorizationAgent jarvis: ;
+    interop:hasInbox              stark:inbox\/general ;
+    interop:hasAccessInbox        stark:inbox\/access .

@@ -1,0 +1,36 @@
+@prefix :           <https://projectron.example/> .
+@prefix solid:      <http://www.w3.org/ns/solid/terms> .
+@prefix interop:    <http://www.w3.org/ns/solid/interop#> .
+@prefix st:         <http://www.w3.org/ns/shapetree#> .
+@prefix xsd:        <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf:        <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:       <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:        <http://www.w3.org/2002/07/owl#> .
+@prefix dcterms:    <http://purl.org/dc/terms/> .
+@prefix acl:        <http://www.w3.org/ns/auth/acl#> .
+@prefix dpv:        <https://w3id.org/dpv/dpv-owl#> .
+
+<>
+    dcterms:issued   "2022-06-22"^^xsd:date ;
+    dcterms:modified "2020-06-22"^^xsd:date ;
+    rdfs:label       "Terms for Projectron key resources"@en .
+
+#############################################################################
+
+:Project
+    a                rdfs:Class ;
+    rdfs:comment     "A  planned piece of work that has a particular aim, especially one that is organized by a government, company, or other organization."@en ;
+    rdfs:isDefinedBy <> ;
+    rdfs:label       "Project"@en .
+
+:Task
+    a                rdfs:Class ;
+    rdfs:comment     "A usually assigned piece of work often to be finished within a certain time."@en ;
+    rdfs:isDefinedBy <> ;
+    rdfs:label       "Task"@en .
+
+:Contact
+    a                rdfs:Class ;
+    rdfs:comment     "An individual human, usually an adult."@en ;
+    rdfs:isDefinedBy <> ;
+    rdfs:label       "Contact"@en .

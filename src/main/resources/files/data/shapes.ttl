@@ -1,0 +1,76 @@
+@prefix st:         <http://www.w3.org/ns/shapetrees#> .
+@prefix pm-shex:    <http://data.example/shapetrees/pm#> .
+@prefix pm:         <http://data.example/ns/pm#> .
+@prefix skos:       <http://www.w3.org/2004/02/skos/core#> .
+@prefix dpv:        <https://w3id.org/dpv/dpv-owl#> .
+
+pm-shex:ProjectRegistrationTree
+    a              st:ShapeTree ;
+    st:expectsType st:Container ;
+    st:contains    pm-shex:ProjectTree .
+
+pm-shex:ProjectTree
+    a              st:ShapeTree ;
+    st:expectsType st:Resource ;
+    st:shape       pm-shex:ProjectShape ;
+    skos:prefLabel "Project"@en ;
+    skos:definition
+                   "A project is composed of a title, a description, a project manager, a due date and status, and a list of tasks."@en ;
+    st:hasData     dpv:NonPersonalData ;
+    st:references  [ st:hasShapeTree pm-shex:TaskTree ;
+                     st:viaPredicate pm:hasTask ] .
+
+pm-shex:TaskRegistrationTree
+    a              st:ShapeTree ;
+    st:expectsType st:Container ;
+    st:contains    pm-shex:TaskTree .
+
+pm-shex:TaskTree
+    a               st:ShapeTree ;
+    st:expectsType  st:Resource ;
+    skos:prefLabel  "Task"@en ;
+    skos:definition "A task is composed of an assignee, a due date, and a description."@en ;
+    st:hasData      dpv:NonPersonalData ;
+    st:shape        pm-shex:TaskShape .
+
+pm-shex:ContactRegistrationTree
+    a              st:ShapeTree ;
+    st:expectsType st:Container ;
+    st:contains    pm-shex:ContactTree .
+
+pm-shex:ContactTree
+    a              st:ShapeTree ;
+    st:expectsType st:Resource ;
+    skos:prefLabel "Contact"@en ;
+    skos:definition
+                   "A contact describes a person with a first and last name, a job title (optionally), a telephone number and an e-mail address."@en ;
+    st:hasData     dpv:PersonalData ;
+    st:shape       pm-shex:ContactShape .
+
+pm-shex:CreditCardRegistrationTree
+    a              st:ShapeTree ;
+    st:expectsType st:Container ;
+    st:contains    pm-shex:CreditCardTree .
+
+pm-shex:CreditCardTree
+    a              st:ShapeTree ;
+    st:expectsType st:Resource ;
+    skos:prefLabel "Credit Card"@en ;
+    skos:definition
+                   "A credit card describe a payment method (e.g. Visa, Mastercard) that can be used to pay for service."@en ;
+    st:hasData     dpv:SensitivePersonalData ;
+    st:shape       pm-shex:CreditCardShape .
+
+pm-shex:ProjectronAccountRegistrationTree
+    a              st:ShapeTree ;
+    st:expectsType st:Container ;
+    st:contains    pm-shex:ProjectronAccountTree .
+
+pm-shex:ProjectronAccountTree
+    a              st:ShapeTree ;
+    st:expectsType st:Resource ;
+    skos:prefLabel "Projectron account"@en ;
+    skos:definition
+                   "A Projectron account is a container for all of your account information, incl. and not limited to your preferences, contact information, subscription details, and payment history."@en ;
+    st:hasData     dpv:PersonalData ;
+    st:shape       pm-shex:ContactShape .

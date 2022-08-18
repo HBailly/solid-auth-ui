@@ -1,0 +1,29 @@
+@startuml
+
+hide empty fields
+hide empty methods
+
+object Projectron #MediumSeaGreen {
+    Application
+}
+
+object Project {
+    Shape Tree
+}
+object Task {
+    Shape Tree
+}
+
+object Contact {
+    Shape Tree
+}
+
+Projectron --> Project:manages
+Projectron --> Contact:reads
+Project --> Task:contains
+Task-->Task:contains
+
+Project -left-> Contact:has Project Manager
+Task --> Contact:has Assignee
+
+@enduml

@@ -1,0 +1,24 @@
+@startuml
+skinparam ranksep 25
+skinparam nodesep 25
+hide empty fields
+hide empty methods
+
+class SocialAgent #MediumSeaGreen
+class Application
+class DataInstance
+
+SocialAgent --> Application #line.bold : hasAuthorizationAgent
+SocialAgent -down-> RegistrySet #line.bold : hasRegistrySet
+
+RegistrySet --> AgentRegistry #line.bold : hasAgentRegistry
+RegistrySet --> DataRegistry #line.dashed : hasDataRegistry*
+
+AgentRegistry --> SocialAgentRegistration #line.dashed : hasSocialAgent\nRegistration*
+AgentRegistry ---> ApplicationRegistration #line.dashed : hasApplication\nRegistration*
+
+DataRegistry --> DataRegistration #line.dashed :  hasData\nRegistration*
+DataRegistration --> DataInstance #line.dashed; : contains*
+
+
+@enduml

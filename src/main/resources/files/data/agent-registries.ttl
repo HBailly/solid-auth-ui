@@ -1,0 +1,155 @@
+@prefix rdf:            <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:           <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:            <http://www.w3.org/2001/XMLSchema#> .
+@prefix acl:            <http://www.w3.org/ns/auth/acl#> .
+@prefix interop:        <http://www.w3.org/ns/solid/interop#> .
+@prefix pm-shapetrees:  <http://data.example/shapetrees/pm#> .
+
+@prefix jarvis:         <https://jarvis.example/> .
+@prefix projectron:     <https://projectron.example/> .
+
+@prefix alice:          <https://alice.example/> .
+@prefix alice-auth:     <https://alice.example/authorization/> .
+@prefix alice-agents:   <https://alice.example/agents/> .
+
+@prefix JAmott:         <https://jamott.example/> .
+@prefix JTill:          <https://jtill.example/> .
+@prefix MBlaiklock:     <https://mblaiklock.example/> .
+@prefix NPowder:        <https://npowder.example/> .
+@prefix RCandy:         <https://rcandy.example/> .
+@prefix LKeeves:        <https://lkeeves.example/> .
+@prefix RRamsbottom:    <https://rramsbottom.example/> .
+@prefix OCondliffe:     <https://ocondliffe.example/> .
+@prefix RKeniwell:      <https://rkeniwell.example/> .
+@prefix FBaum:          <https://fbaum.example/> .
+
+alice-agents:
+    a                                  interop:AgentRegistry ;
+    interop:hasSocialAgentRegistration alice-agents:ooy8ww7w\/,           # JAmott
+                                       alice-agents:97sihffl\/,           # JTill
+                                       alice-agents:0rm3meze\/,           # MBlaiklock
+                                       alice-agents:cs5lws5c\/,           # NPowder
+                                       alice-agents:705zfskn\/,           # RCandy
+                                       alice-agents:m50cdfsh\/,           # LKeeves
+                                       alice-agents:9zp3kysn\/,           # RRamsbottom
+                                       alice-agents:zhq32439\/,           # OCondliffe
+                                       alice-agents:r9dtpmn3\/,           # RKeniwell
+                                       alice-agents:sqgpj1c2\/ ;          # FBaum
+    interop:hasApplicationRegistration alice-agents:2f2f3628\/,           # Projectron
+                                       alice-agents:b5eea7bb\/,           # Jarvis
+                                       alice-agents:c2328cdd\/ .          # Performchart
+
+alice-agents:ooy8ww7w\/
+    a                              interop:SocialAgentRegistration ;
+    interop:registeredBy           alice:\#id ;
+    interop:registeredWith         jarvis:\#id ;
+    interop:registeredAt           "2020-04-04T20:15:47.000Z"^^xsd:dateTime ;
+    interop:updatedAt              "2020-04-04T21:11:33.000Z"^^xsd:dateTime ;
+    interop:registeredAgent        JAmott:\#id ;
+    interop:reciprocalRegistration JAmott:agents\/r3u07s8m\/ ;
+    interop:hasAccessGrant         alice-agents:ooy8ww7w\/0s2g21ag .
+
+alice-agents:97sihffl\/
+    a                              interop:SocialAgentRegistration ;
+    interop:registeredBy           alice:\#id ;
+    interop:registeredWith         jarvis:\#id ;
+    interop:registeredAt           "2020-04-04T20:15:47.000Z"^^xsd:dateTime ;
+    interop:updatedAt              "2020-04-04T21:11:33.000Z"^^xsd:dateTime ;
+    interop:registeredAgent        JTill:\#id ;
+    interop:reciprocalRegistration JTill:agents\/41fvv613\/ ;
+    interop:hasAccessGrant         alice-agents:97sihffl\/uhb6n5fv .
+
+alice-agents:0rm3meze\/
+    a                              interop:SocialAgentRegistration ;
+    interop:registeredBy           alice:\#id ;
+    interop:registeredWith         jarvis:\#id ;
+    interop:registeredAt           "2020-04-04T20:15:47.000Z"^^xsd:dateTime ;
+    interop:updatedAt              "2020-04-04T21:11:33.000Z"^^xsd:dateTime ;
+    interop:registeredAgent        MBlaiklock:\#id ;
+    interop:reciprocalRegistration MBlaiklock:agents\/axl7kd14\/ ;
+    interop:hasAccessGrant         alice-agents:0rm3meze\/i99e0m4h .
+
+alice-agents:cs5lws5c\/
+    a                              interop:SocialAgentRegistration ;
+    interop:registeredBy           alice:\#id ;
+    interop:registeredWith         jarvis:\#id ;
+    interop:registeredAt           "2020-04-04T20:15:47.000Z"^^xsd:dateTime ;
+    interop:updatedAt              "2020-04-04T21:11:33.000Z"^^xsd:dateTime ;
+    interop:registeredAgent        NPowder:\#id ;
+    interop:reciprocalRegistration NPowder:agents\/nmv286k2\/ ;
+    interop:hasAccessGrant         alice-agents:cs5lws5c\/jmoargcb .
+
+alice-agents:705zfskn\/
+    a                              interop:SocialAgentRegistration ;
+    interop:registeredBy           alice:\#id ;
+    interop:registeredWith         jarvis:\#id ;
+    interop:registeredAt           "2020-04-04T20:15:47.000Z"^^xsd:dateTime ;
+    interop:updatedAt              "2020-04-04T21:11:33.000Z"^^xsd:dateTime ;
+    interop:registeredAgent        RCandy:\#id ;
+    interop:reciprocalRegistration RCandy:agents\/9qvderxf\/ ;
+    interop:hasAccessGrant         alice-agents:705zfskn\/wiqf7csb .
+
+alice-agents:m50cdfsh\/
+    a                              interop:SocialAgentRegistration ;
+    interop:registeredBy           alice:\#id ;
+    interop:registeredWith         jarvis:\#id ;
+    interop:registeredAt           "2020-04-04T20:15:47.000Z"^^xsd:dateTime ;
+    interop:updatedAt              "2020-04-04T21:11:33.000Z"^^xsd:dateTime ;
+    interop:registeredAgent        LKeeves:\#id ;
+    interop:reciprocalRegistration LKeeves:agents\/6d1rk9ay\/ ;
+    interop:hasAccessGrant         alice-agents:m50cdfsh\/msbisqen .
+
+alice-agents:9zp3kysn\/
+    a                              interop:SocialAgentRegistration ;
+    interop:registeredBy           alice:\#id ;
+    interop:registeredWith         jarvis:\#id ;
+    interop:registeredAt           "2020-04-04T20:15:47.000Z"^^xsd:dateTime ;
+    interop:updatedAt              "2020-04-04T21:11:33.000Z"^^xsd:dateTime ;
+    interop:registeredAgent        RRamsbottom:\#id ;
+    interop:reciprocalRegistration RRamsbottom:agents\/3sscigmq\/ ;
+    interop:hasAccessGrant         alice-agents:9zp3kysn\/qdfhwvmj .
+
+alice-agents:zhq32439\/
+    a                              interop:SocialAgentRegistration ;
+    interop:registeredBy           alice:\#id ;
+    interop:registeredWith         jarvis:\#id ;
+    interop:registeredAt           "2020-04-04T20:15:47.000Z"^^xsd:dateTime ;
+    interop:updatedAt              "2020-04-04T21:11:33.000Z"^^xsd:dateTime ;
+    interop:registeredAgent        OCondliffe:\#id ;
+    interop:reciprocalRegistration OCondliffe:agents\/5acg2hxb\/ ;
+    interop:hasAccessGrant         alice-agents:zhq32439\/xdspsigq .
+
+alice-agents:r9dtpmn3\/
+    a                              interop:SocialAgentRegistration ;
+    interop:registeredBy           alice:\#id ;
+    interop:registeredWith         jarvis:\#id ;
+    interop:registeredAt           "2020-04-04T20:15:47.000Z"^^xsd:dateTime ;
+    interop:updatedAt              "2020-04-04T21:11:33.000Z"^^xsd:dateTime ;
+    interop:registeredAgent        RKeniwell:\#id ;
+    interop:reciprocalRegistration RKeniwell:agents\/vevym0hz\/ ;
+    interop:hasAccessGrant         alice-agents:r9dtpmn3\/ce6m19wg .
+
+alice-agents:sqgpj1c2\/
+    a                              interop:SocialAgentRegistration ;
+    interop:registeredBy           alice:\#id ;
+    interop:registeredWith         jarvis:\#id ;
+    interop:registeredAt           "2020-04-04T20:15:47.000Z"^^xsd:dateTime ;
+    interop:updatedAt              "2020-04-04T21:11:33.000Z"^^xsd:dateTime ;
+    interop:registeredAgent        FBaum:\#id ;
+    interop:reciprocalRegistration FBaum:agents\/pwdcy0f3\/ ;
+    interop:hasAccessGrant         alice-agents:sqgpj1c2\/r83lzsdu .
+
+alice-auth:
+    a                              interop:AuthorizationRegistry ;
+    interop:hasAccessAuthorization alice-auth:47e07897,   # jarvis
+                                   alice-auth:c6ytcda5,   # JAmott
+                                   alice-auth:r0eab5f9,   # JTill
+                                   alice-auth:9eoyh06i,   # MBlaiklock
+                                   alice-auth:akmoqg93,   # NPowder
+                                   alice-auth:shetfwmf,   # RCandy
+                                   alice-auth:t7m6e8yt,   # LKeeves
+                                   alice-auth:yjw7smut,   # RRamsbottom
+                                   alice-auth:m84fk0j4,   # OCondliffe
+                                   alice-auth:r5rgj1au,   # RKeniwell
+                                   alice-auth:4pnhywip,   # FBaum
+                                   alice-auth:cce01253 .   # performchart

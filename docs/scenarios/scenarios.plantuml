@@ -1,0 +1,187 @@
+@startuml
+title "Flat Needs Scenario"
+hide empty fields
+hide empty methods
+
+object "**Projectron**" as Application #MediumSeaGreen {
+    Application
+}
+
+object "**need-group-pm**" as Group1 {
+    AccessNeedGroup
+}
+
+object "**need-project**" as Group1Need1 {
+    AccessNeed
+}
+
+object "**need-task**" as Group1Need2 {
+    AccessNeed
+}
+
+object "**need-contact**" as Group1Need3 {
+    AccessNeed
+}
+
+object "**need-group-account**" as Group2 {
+    AccessNeedGroup
+}
+
+object "**need-bank-details**" as Group2Need1 {
+    AccessNeed
+}
+
+object "**need-account-details**" as Group2Need2 {
+    AccessNeed
+}
+
+Application --> Group1: hasAccessNeedGroup
+Application --> Group2: hasAccessNeedGroup
+
+Group1 -down-> Group1Need1: hasAccessNeed
+Group1 -down-> Group1Need2: hasAccessNeed
+Group1 -down-> Group1Need3: hasAccessNeed
+
+Group2 --> Group2Need1: hasAccessNeed
+Group2 --> Group2Need2: hasAccessNeed
+
+@enduml
+
+@startuml
+title "Nested Needs Scenario"
+hide empty fields
+hide empty methods
+
+object "**Projectron**" as Application #MediumSeaGreen {
+    Application
+}
+
+object "**need-group-pm**" as Group1 {
+    AccessNeedGroup
+}
+
+object "**need-project**" as Group1Need1 {
+    AccessNeed
+}
+
+object "**need-task**" as Group1Need2 {
+    AccessNeed
+}
+
+object "**need-task-contact**" as Group1Need3 {
+    AccessNeed
+}
+
+object "**need-project-contact**" as Group1Need4 {
+    AccessNeed
+}
+
+object "**need-group-account**" as Group2 {
+    AccessNeedGroup
+}
+
+object "**need-contact-details**" as Group2Need1 {
+    AccessNeed
+}
+
+
+object "**need-bank-details**" as Group2Need2 {
+    AccessNeed
+}
+
+object "**need-account-details**" as Group2Need3 {
+    AccessNeed
+}
+
+Application --> Group1: hasAccessNeedGroup
+Application --> Group2: hasAccessNeedGroup
+
+Group1 --> Group1Need1: hasAccessNeed
+Group1 --> Group1Need2: hasAccessNeed
+
+Group1Need1 --> Group1Need4: hasAccessNeed
+Group1Need2 --> Group1Need3: hasAccessNeed
+
+Group2 --> Group2Need1: hasAccessNeed
+Group2 --> Group2Need3: hasAccessNeed
+
+Group2Need1 --> Group2Need2: hasAccessNeed
+
+
+@enduml
+
+@startuml
+title "Inherited Needs Scenario"
+hide empty fields
+hide empty methods
+
+object "**Projectron**" as Application #MediumSeaGreen {
+    Application
+}
+
+object "**need-group-pm**" as Group1 {
+    AccessNeedGroup
+}
+
+object "**need-project**" as Group1Need1 {
+    AccessNeed
+}
+
+object "**need-task**" as Group1Need2 {
+    AccessNeed
+}
+
+object "**need-task-contact**" as Group1Need3 {
+    AccessNeed
+}
+
+object "**need-project-contact**" as Group1Need4 {
+    AccessNeed
+}
+
+object "**need-group-account**" as Group2 {
+    AccessNeedGroup
+}
+
+object "**need-contact-details**" as Group2Need1 {
+    AccessNeed
+}
+
+
+object "**need-bank-details**" as Group2Need2 {
+    AccessNeed
+}
+
+object "**need-account-details**" as Group2Need3 {
+    AccessNeed
+}
+
+object "**need-group-contact**" as Group3 {
+    AccessNeedGroup
+}
+
+object "**need-contact**" as Group3Need1 {
+    AccessNeed
+}
+
+
+Application -down-> Group1: hasAccessNeedGroup
+Application -down-> Group2: hasAccessNeedGroup
+Application -down-> Group3: hasAccessNeedGroup
+
+Group1 --> Group1Need1: hasAccessNeed
+Group1 --> Group1Need2: hasAccessNeed
+
+Group1Need1 --> Group1Need4: hasAccessNeed
+Group1Need2 --> Group1Need3: hasAccessNeed
+
+Group2 --> Group2Need1: hasAccessNeed
+Group2 --> Group2Need3: hasAccessNeed
+
+Group2Need1 --> Group2Need2: hasAccessNeed
+
+Group3 --> Group3Need1: hasAccessNeed
+Group1Need3 -up-> Group3Need1 #line.dashed : inheritsFrom
+Group1Need4 -up-> Group3Need1 #line.dashed : inheritsFrom
+
+@enduml

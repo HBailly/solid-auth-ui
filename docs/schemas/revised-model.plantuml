@@ -1,0 +1,109 @@
+@startuml
+hide empty fields
+hide empty methods
+
+enum AccessNecessity {
+    AccessRequired
+    AccessOptional
+}
+
+enum AccessScenario {
+    SharedAccess
+    PersonalAccess
+}
+
+enum AuthenticateAs {
+    SocialAgent
+    Application
+}
+
+enum AccessMode {
+    Read
+    Write
+    Update
+    Create
+    Delete
+    Append
+}
+
+class Application #MediumSeaGreen
+
+class AccessNeedGroup {
+    accessNecessity
+    accessScenario
+    authenticatesAs
+}
+class AccessNeed {
+    registeredShapeTree
+    accessMode
+    creatorAccessMode
+    accessNecessity
+}
+
+class AccessDescriptionSet {
+    usesLanguage
+}
+class AccessNeedGroupDescription {
+    usesLanguage
+    preflabel
+    definition
+}
+class AccessNeedDescription {
+    usesLanguage
+    preflabel
+    definition
+}
+
+class DataInstance
+
+Application -down-> AccessNeedGroup #line.bold : hasAccessNeedGroup
+Application --> AccessDescriptionSet #line.dashed : hasAccessDescriptionSet*
+
+AccessDescriptionSet --> AccessNeedGroupDescription #line.dashed : hasAccessNeedGroupDescription*
+AccessDescriptionSet --> AccessNeedDescription #line.dashed : hasAccessNeedDescription*
+
+AccessNeedGroup --> AccessNeedGroupDescription #line.dashed : hasAccessDescriptionSet*
+AccessNeedGroup --> AccessNeed : hasAccessNeed+
+
+AccessNeed --> AccessNeedDescription #line.dashed : hasAccessNeedDescription*
+AccessNeed --> DataInstance #line.dashed : hasDataInstance*
+AccessNeed --> AccessNeed #line.dotted : inheritsFromNeed?
+
+@enduml
+
+@startuml
+hide empty fields
+hide empty methods
+
+interface Agent
+class SocialAgent implements Agent
+
+class AccessGrant #MediumSeaGreen {
+    grantedAt
+}
+
+class DataGrant {
+    registeredShapeTree
+    accessMode
+    creatorAccessMode
+    scopeOfGrant
+}
+
+class DelegatedDataGrant extends DataGrant
+
+AccessNeedGroup --> AccessNeed : hasAccessNeed*
+
+AccessGrant -left-> Agent #line.bold : grantee
+AccessGrant --> Agent #line.bold : grantedBy
+AccessGrant --> AccessNeedGroup #line.dotted : hasAccessNeedGroup
+AccessGrant --> DataGrant : hasDataGrant+
+
+DataGrant -left-> SocialAgent : dataOwner
+DataGrant --> Agent : grantee
+DataGrant --> AccessNeed : satisfiesAccessNeed
+DataGrant --> DataInstance : hasDataInstance*
+DataGrant --> DataGrant #line.dotted : inheritsFromGrant
+
+DelegatedDataGrant --> DataGrant : delegationOfGrant
+
+@enduml

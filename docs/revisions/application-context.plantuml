@@ -1,0 +1,97 @@
+
+@startuml
+skinparam ranksep 25
+skinparam nodesep 25
+hide empty fields
+hide empty methods
+
+class Application #MediumSeaGreen
+
+class AccessNeedGroup {
+    accessNecessity
+    accessScenario
+    authenticatesAs
+}
+class AccessNeed {
+    registeredShapeTree
+    accessMode
+    creatorAccessMode
+    accessNecessity
+}
+
+class AccessDescriptionSet {
+    usesLanguage
+}
+class AccessNeedGroupDescription {
+    preflabel
+    definition
+}
+class AccessNeedDescription {
+    preflabel
+}
+
+Application -right-> AccessNeedGroup #line.bold : hasAccessNeedGroup
+
+AccessNeedGroup --> AccessDescriptionSet #line.dashed : hasAccessDescriptionSet*
+AccessNeedGroup -down-> AccessNeed : hasAccessNeed+
+
+AccessNeed <-- AccessNeed #line.dotted : inheritsFromNeed?
+
+AccessNeedGroupDescription -up-> AccessDescriptionSet #line.bold : inAccessDescriptionSet
+AccessNeedGroupDescription --> AccessNeedGroup #line.bold : hasAccessNeedGroup
+
+AccessNeedDescription -up-> AccessDescriptionSet #line.bold : inAccessDescriptionSet
+AccessNeedDescription --> AccessNeed #line.bold : hasAccessNeed
+
+@enduml
+
+@startuml
+skinparam classFontColor automatic
+skinparam ranksep 25
+skinparam nodesep 25
+hide empty fields
+hide empty methods
+
+class Application #MediumSeaGreen
+
+class AccessNeedGroup {
+    accessNecessity
+    accessScenario
+    authenticatesAs
+}
+class AccessNeed {
+    registeredShapeTree
+    accessMode
+    creatorAccessMode
+    accessNecessity
+    **hasPurpose**
+}
+
+class AccessDescriptionSet {
+    usesLanguage
+}
+class AccessNeedGroupDescription {
+    preflabel
+    definition
+}
+class AccessNeedDescription {
+    preflabel
+    **definition**
+}
+
+class "<i>  Access Need  </i>" AS AccessNeed2 #lightgrey
+
+Application --> AccessNeedGroup #line.bold : hasAccessNeedGroup
+Application --> AccessDescriptionSet #line.dashed : hasAccessDescriptionSet*
+
+AccessDescriptionSet --> AccessNeedGroupDescription #line.dashed : hasAccessNeed\nGroupDescription*
+AccessDescriptionSet --> AccessNeedDescription #line.dashed : hasAccessNeed\nDescription*
+
+AccessNeedGroup --> AccessNeedGroupDescription #line.dashed : hasAccessNeed\nGroupDescription*
+AccessNeedGroup --> AccessNeed #line.bold : hasAccessNeed+
+
+AccessNeed --> AccessNeedDescription #line.dashed : hasAccessNeed\nDescription*
+AccessNeed ---> AccessNeed2 #line.dashed : hasAccessNeed*
+AccessNeed2 --> AccessNeed #line.dotted : inheritsFromNeed?
+
+@enduml

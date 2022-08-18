@@ -1,0 +1,85 @@
+@prefix interop:    <http://www.w3.org/ns/solid/interop#> .
+@prefix projectron: <https://projectron.example/needs#> .
+@prefix skos:       <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd:        <http://www.w3.org/2001/XMLSchema#> .
+
+projectron:access-fr
+    a                    interop:AccessDescriptionSet ;
+    interop:usesLanguage "fr"^^xsd:language .
+
+########################################################################################################################
+
+projectron:fr-need-group-pm
+    a                              interop:AccessNeedGroupDescription ;
+    interop:inAccessDescriptionSet projectron:access-fr ;
+    interop:hasAccessNeedGroup     projectron:need-group-pm ;
+    skos:prefLabel                 "Lire et contribuer a vos projets"@fr ;
+    skos:definition                "Autorisez Projectron a consulter vos projets existants et a en creer de nouveaux. Projectron ne modifiera pas les donnees existantes mais pourra les completer."@fr .
+
+projectron:fr-need-project
+    a                              interop:AccessNeedDescription ;
+    interop:inAccessDescriptionSet projectron:access-fr ;
+    interop:hasAccessNeed          projectron:need-project ;
+    skos:prefLabel                 "Acces aux projets"@fr ;
+    skos:definition                "L'acces aux projets est necessaire afin que Projectron puisse remplir ses fonctionnalites de base."@fr .
+
+projectron:fr-need-task
+    a                              interop:AccessNeedDescription ;
+    interop:inAccessDescriptionSet projectron:access-fr ;
+    interop:hasAccessNeed          projectron:need-task ;
+    skos:prefLabel                 "Acces aux taches"@fr ;
+    skos:definition                "L'acces aux taches permet a Projectron d'identifier et d'organiser les taches necessaires a la realisation d'un projet."@fr .
+
+projectron:fr-need-contact-project
+    a                              interop:AccessNeedDescription ;
+    interop:inAccessDescriptionSet projectron:access-fr ;
+    interop:hasAccessNeed          projectron:need-contact-project ;
+    skos:prefLabel                 "Acces aux gestionnaires de projet."@fr ;
+    skos:definition                "L'acces aux gestionnaires de projet permet a Projectron d'assigner des personnes en tant que gestionnaires a vos projets."@fr .
+
+projectron:fr-need-contact-task
+    a                              interop:AccessNeedDescription ;
+    interop:inAccessDescriptionSet projectron:access-fr ;
+    interop:hasAccessNeed          projectron:need-contact-task ;
+    skos:prefLabel                 "Acces aux responsables de tache"@fr ;
+    skos:definition                "L'acces aux responsables de taches permet a Projectron d'assigner des personnes a vos taches."@fr .
+
+########################################################################################################################
+
+projectron:fr-need-group-account
+    a                              interop:AccessNeedGroupDescription ;
+    interop:inAccessDescriptionSet projectron:access-fr ;
+    interop:hasAccessNeedGroup     projectron:need-group-account ;
+    skos:prefLabel                 "Gerer vos preferences et moyens de paiement"@fr ;
+    skos:definition                "Allow projectron to read and manage your account preferences, and read your contact details"@fr .
+
+projectron:fr-need-credit-details
+    a                              interop:AccessNeedDescription ;
+    interop:inAccessDescriptionSet projectron:access-fr ;
+    interop:hasAccessNeed          projectron:need-credit-details ;
+    skos:prefLabel                 "Acces aux informations de credit."@fr ;
+    skos:definition                "L'acces a vos cartes de credit permet a Projectron de gerer vos paiements automatiques."@fr .
+
+projectron:fr-need-account-details
+    a                              interop:AccessNeedDescription ;
+    interop:inAccessDescriptionSet projectron:access-fr ;
+    interop:hasAccessNeed          projectron:need-account-details ;
+    skos:prefLabel                 "Acces a votre compte Projectron"@fr ;
+    skos:definition                "L'acces a votre compte permet a Projectron de sauver vos preferences et de gerer vos informations de contact."@fr .
+
+########################################################################################################################
+
+projectron:fr-need-group-contact
+    a                              interop:AccessNeedGroupDescription ;
+    interop:inAccessDescriptionSet projectron:access-fr ;
+    interop:hasAccessNeedGroup     projectron:need-group-contact ;
+    skos:prefLabel                 "Gerer les membres de votre equipe"@fr ;
+    skos:definition                "L'acces aux contacts permet a Projectron de gerer votre equipe et d'assigner les taches et gestionnaires de projet."@fr .
+
+projectron:fr-need-contact
+    a                              interop:AccessNeedDescription ;
+    interop:inAccessDescriptionSet projectron:access-fr ;
+    interop:hasAccessNeed          projectron:need-contact ;
+    skos:prefLabel                 "Acces aux contacts"@fr ;
+    skos:definition                "L'acces aux contacts permet a Projectron d'assigner des personnes a vos taches et projets."@fr .
+

@@ -1,0 +1,57 @@
+@startuml
+
+hide empty fields
+hide empty methods
+
+object "personalPod:Pod" as POD1 {
+    https://personal.alice.example/
+}
+
+object "personalRegistry:Registry" as Personal {
+    "https://personal.alice.example/data/contacts/"
+}
+
+object "workPod:Pod" as POD2 {
+    https://work.alice.example/
+}
+
+object "workRegistry:Registry" as Work {
+    https://work.alice.example/data/contacts/
+}
+
+POD1 <-- Personal
+POD2 <-- Work
+
+@enduml
+@startuml
+
+hide empty fields
+hide empty methods
+
+object "pod:Pod" as POD {
+    "https://alice.example/"
+}
+
+object "personal:Registry" as Personal {
+    "https://alice.example/personal/data/contacts/"
+}
+
+object "work:Registry" as Work {
+    https://alice.example/work/data/contacts/
+}
+
+POD <-- Personal
+POD <-- Work
+
+@enduml
+
+https://personal.alice.example/data/contacts/
+
+
+
+Nariko Powder
+Jerrilyn Till
+Jody Amott
+Rourke Candy
+Larry Keeves
+Melita Blaiklock

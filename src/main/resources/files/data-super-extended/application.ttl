@@ -1,0 +1,16 @@
+@prefix interop:       <http://www.w3.org/ns/solid/interop#>.
+@prefix projectron:    <https://projectron.example/>.
+@prefix needs:         <https://projectron.example/needs#>.
+@prefix acme:          <https://acme.example/#>.
+@prefix jarvis:        <https://jarvis.example/>.
+@prefix stark:         <https://stark-industry.example/>.
+@prefix auth:          <https://jarvis.example/needs#>.
+
+projectron:\#id
+    a                            interop:Application ;
+    interop:applicationName      "Projectron" ;
+    interop:applicationDescription
+                                 "Projectron is a no-frills project management solution that enables you to create and follow-up projects and tasks, and provide assignees to each." ;
+    interop:applicationAuthor    acme:id ;
+    interop:applicationThumbnail <https://www.svgrepo.com/show/227908/clerk.svg> ;
+    interop:hasAccessNeedGroup     needs:need-group-pm, needs:need-group-contact, needs:need-group-account .

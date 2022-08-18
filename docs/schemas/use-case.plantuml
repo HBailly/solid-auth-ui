@@ -1,0 +1,26 @@
+@startuml
+skinparam actorStyle awesome
+left to right direction
+
+actor "Solid User" as USER
+actor "Application Maintainer" as MAINTAINER
+
+rectangle "SOLID Ecosystem" {
+    rectangle "Application Access Request\n& Authorization UI" as UI {
+        usecase "Review Application Access Needs" as REVIEW
+        usecase "Configure Scope of Access" as CONFIGURE
+        usecase "Generate Authorizations" AS GENERATE
+    }
+    usecase "Create Application's\nGeneric Access Needs" as NEEDS
+}
+
+USER --> REVIEW
+USER --> GENERATE
+
+REVIEW <. GENERATE: extends
+
+GENERATE .left.> CONFIGURE: includes
+
+NEEDS <-left- MAINTAINER
+
+@enduml

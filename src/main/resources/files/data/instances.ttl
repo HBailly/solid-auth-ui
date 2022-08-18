@@ -1,0 +1,109 @@
+@prefix interop:                <http://www.w3.org/ns/solid/interop#> .
+@prefix xsd:                    <http://www.w3.org/2001/XMLSchema#> .
+@prefix ldp:                    <http://www.w3.org/ns/ldp#>.
+@prefix rdfs:                   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix jarvis:                 <https://jarvis.example/> .
+@prefix alice:                  <https://alice.example/> .
+@prefix alice-work-data:        <https://work.alice.example/data/> .
+@prefix alice-personal-data:    <https://personal.alice.example/data/> .
+@prefix pm-shapetree:           <http://data.example/shapetrees/pm#> .
+@prefix projectron:             <https://projectron.example/#> .
+
+#=======================================================================================================================
+# https://onlinerandomtools.com/generate-random-data-from-regexp
+# https://mockaroo.com
+#=======================================================================================================================
+
+# WORK
+
+alice-work-data:projects\/s5u6cepa
+    a                projectron:project ;
+    rdfs:label       "Project Alpha"@en ;
+    rdfs:description "The Alpha Project"@en .
+
+alice-work-data:projects\/ir9nuw77
+    a                projectron:project ;
+    rdfs:label       "Project Beta"@en ;
+    rdfs:description "The Beta Project"@en .
+
+alice-work-data:tasks\/8501f084
+    a                projectron:task ;
+    rdfs:label       "Task 1"@en ;
+    rdfs:description "Do this"@en .
+
+alice-work-data:tasks\/qhb5mlmp
+    a                projectron:task ;
+    rdfs:label       "Task 2"@en ;
+    rdfs:description "Do that"@en .
+
+alice-work-data:tasks\/sg7s5x30
+    a                projectron:task ;
+    rdfs:label       "Task 3"@en ;
+    rdfs:description "Do this again"@en .
+
+alice-work-data:contacts\/h430rz65
+    a          projectron:contact ;
+    rdfs:label "Jody Amott" .
+
+alice-work-data:contacts\/4c23z7qs
+    a          projectron:contact ;
+    rdfs:label "Jerrilyn Till" .
+
+alice-work-data:contacts\/pbvonly2
+    a          projectron:contact ;
+    rdfs:label "Melita Blaiklock" .
+
+alice-work-data:contacts\/3hn3pn2b
+    a          projectron:contact ;
+    rdfs:label "Nariko Powder" .
+
+alice-work-data:contacts\/ht1dsldt
+    a          projectron:contact ;
+    rdfs:label "Rourke Candy" .
+
+alice-work-data:contacts\/moj80l98
+    a          projectron:contact ;
+    rdfs:label "Larry Keeves" .
+
+alice-work-data:creditcards\/z2plpdek
+    a          projectron:creditcard ;
+    rdfs:label "3746 2266 9991 3544" .
+
+#-----------------------------------------------------------------------------------------------------------------------
+
+# PERSONAL
+
+alice-personal-data:projects\/uk8cmrhd
+    a                projectron:project ;
+    rdfs:label       "My Project 1"@en ;
+    rdfs:description "My Next Holiday Project"@en .
+
+alice-personal-data:tasks\/phlgk7b9
+    a                projectron:task ;
+    rdfs:label       "Buy Plane Tickets"@en ;
+    rdfs:description "Find and buy plane tickets"@en .
+
+alice-personal-data:tasks\/ksihwgiq
+    a                projectron:task ;
+    rdfs:label       "Book Hotels"@en ;
+    rdfs:description "Book the finest hotels"@en .
+
+alice-personal-data:contacts\/eb5147pw
+    a          projectron:contact ;
+    rdfs:label "Reinald Ramsbottom" .
+
+alice-personal-data:contacts\/aw8linss
+    a          projectron:contact ;
+    rdfs:label "Obed Condliffe" .
+
+alice-personal-data:contacts\/isuq4em8
+    a          projectron:contact ;
+    rdfs:label "Rita Keniwell" .
+
+alice-personal-data:contacts\/o5tzpk1h
+    a          projectron:contact ;
+    rdfs:label "Francesco Baum" .
+
+alice-personal-data:creditcards\/dt90cpuk
+    a          projectron:creditcard ;
+    rdfs:label "3746 2216 7302 2255" .
